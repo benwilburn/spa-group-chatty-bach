@@ -6,9 +6,8 @@ var Chatty = (function(aug) {
 
 	var outputDiv = $("#msgArea");
 
-	function Message (string, handle, person, updateTime) {
+	function Message (string, person, updateTime) {
 		this.string = string;
-		this.handle = handle;
 		this.user = person;
 		this.time = updateTime;
 	}

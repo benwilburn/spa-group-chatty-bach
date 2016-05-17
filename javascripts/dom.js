@@ -80,6 +80,7 @@ function msgSubmit() {
 		var editMsg= $(".edit");
 		Chatty.editMessage(userInput.val(), id);
 		userInput.val("");
+		userInput.off("keyup");
 		edit=false;
 
 	} else {
@@ -97,13 +98,17 @@ function msgSubmit() {
 var id;
 
 function editMsg() {
-if(event.target.className === "edit")
+if($(event.target).hasClass("edit")) {
 	edit= true;
-	id=event.target.parentElement.id;
-	console.log("edit", event.target.parentElement.id);
-	var userMessage=$(this).children("label").html();
+	messageToEdit = $(event.target).parent().html();
+	console.log("edit", messageToEdit);
+	var userMessage = $(event.target).siblings("label");
 	$("#userInput").focus();
+	$("#userInput").val(userMessage.html());
 	$("#userInput").val(userMessage);
+	$("#userInput").on("keyup", (function (){
+			userMessage.html(userInput.val());
+	}));
 }
 
 
