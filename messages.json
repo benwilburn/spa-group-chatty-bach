@@ -1,0 +1,34 @@
+{
+	"messages": [
+		{
+			"handle": 1,
+			"message": "Hello",
+		 	"user": "Zeus"
+		},
+		{
+			"handle": 2,
+			"message": "Where are you?",
+		 	"user": "Hades"
+		},
+		{
+			"handle": 3,
+			"message": "a/s/l?",
+		 	"user": "Athena"
+		},
+		{
+			"handle": 4,
+			"message": "Welcome to Chatty",
+		 	"user": "Poseidon"
+		},
+		{
+			"handle" : 5,
+			"message": "How you doin'?",
+		 	"user": "Hercules"
+		},
+		{
+			"handle": 6,
+			"message": "Wer da pty at",
+		 	"user": "Thor"
+		}
+	]
+}
