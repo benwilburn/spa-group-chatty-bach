@@ -6,8 +6,9 @@ var Chatty = (function(aug) {
 
 	var outputDiv = $("#msgArea");
 
-	function Message (string, person, updateTime) {
+	function Message (string, handle, person, updateTime) {
 		this.string = string;
+		this.handle = handle;
 		this.user = person;
 		this.time = updateTime;
 	}
@@ -27,8 +28,8 @@ var Chatty = (function(aug) {
 		var toEdit = messages.find(function(message) {
 			return message.handle === editId;
 		});
-		console.log("trouble", editId)
-		toEdit.string = editText;
+		console.log("trouble", editId);
+		// toEdit.string = editText;
 		Chatty.loadMessages();
 	};
 
@@ -45,10 +46,14 @@ var Chatty = (function(aug) {
 
 	aug.loadMessages = function () {
 		var buildHTML = "";
+		alert("4");
 		if (messages.length >= 20){
 			messages.shift(messages[0]);
 		}
 		for (var i = (messages.length - 1); i >= 0; i--) {
+			messages[i].handle = `msg${i}`; //WHEN YOU DO A DELETE NEED TO RESET HANDLES
+
+			console.log("works2");
 			buildHTML += `<p id="${messages[i].handle}" class="message strong">${messages[i].user}: <label class='userMsg'>${messages[i].string} </label><button class="edit">Edit</button><button class="delete">Delete</button><span class="timeStamp">${messages[i].time}</span></p>`;
 		}
 		outputDiv.html(buildHTML);

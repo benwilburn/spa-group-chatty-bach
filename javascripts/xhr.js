@@ -5,13 +5,16 @@ var Chatty= (function(xhr){
 
 	$.ajax({
     url:"messages.json"
-  }).done(fetchMsg);
+  }).done(fetchMsg).fail(function (jqXHR, textStatus){
+  	alert(textStatus);
+  });
+
 
 	function fetchMsg (jsonContents) {
 		for (var i = 0; i < jsonContents.messages.length; i++) {
 			jsonMessages.push(jsonContents.messages);
 			Chatty.addNewMessage(jsonContents.messages[i].message,jsonContents.messages[i].user);
-			// console.log(jsonContents.messages);
+			console.log(jsonContents.messages);
 		}
 	}
 
@@ -22,4 +25,6 @@ var Chatty= (function(xhr){
 	return xhr;
 
 }(Chatty || {}));
+
+
 
